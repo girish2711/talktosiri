@@ -62,7 +62,7 @@ extension Matrix: Summable {
         guard (lhs.rows == rhs.rows) else {
             return nil
         }
-        var result: Matrix
+        var result: Matrix = Matrix(columns: lhs.columns, rows: rhs.rows, data: [])
         
         for lhsItem in lhs.data {
             for rhsItem in rhs.data {
