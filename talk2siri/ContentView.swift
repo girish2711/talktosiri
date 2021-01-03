@@ -20,15 +20,36 @@ struct ContentView: View {
                 }).background(
                     RoundedRectangle(cornerRadius: 10, style: .continuous)
                         .stroke( Color.gray, lineWidth: 2)
+                        .frame(width: g.size.width*98/100, height: g.size.height*50/100, alignment: .center)
                 )
                 
                 HStack.init(alignment: .center, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/, content: {
-                    /*@START_MENU_TOKEN@*/Text("Placeholder")/*@END_MENU_TOKEN@*/
-                    /*@START_MENU_TOKEN@*/Text("Placeholder")/*@END_MENU_TOKEN@*/
-                    /*@START_MENU_TOKEN@*/Text("Placeholder")/*@END_MENU_TOKEN@*/
+                    ForEach(
+                                    1...5,
+                                    id: \.self
+                                ) {
+                                    Text("Item \($0)")
+                                }
+//                    /*@START_MENU_TOKEN@*/Text("Placeholder")/*@END_MENU_TOKEN@*/
+//                    /*@START_MENU_TOKEN@*/Text("Placeholder")/*@END_MENU_TOKEN@*/
+//                    /*@START_MENU_TOKEN@*/Text("Placeholder")/*@END_MENU_TOKEN@*/
                 })
                 
             }
+        }
+    }
+}
+
+struct TestView: View {
+    var body: some View {
+        HStack(alignment: .top) {
+            Text("Live")
+                .font(.caption)
+            Text("long")
+            Text("and")
+                .font(.title)
+            Text("prosper")
+                .font(.largeTitle)
         }
     }
 }
@@ -78,7 +99,7 @@ extension Matrix: Summable {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        TestView()
     }
 }
 

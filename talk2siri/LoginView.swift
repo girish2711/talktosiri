@@ -13,7 +13,7 @@ struct LoginView: View {
     @State var password: String = ""
     @State private var usrIdEditing = false
     @State private var pwdEditing = false
-    
+
     
     var body: some View {
         GeometryReader { g in
@@ -21,7 +21,8 @@ struct LoginView: View {
                 VStack.init(alignment:.leading) {
                     Text("Enter User ID")
                         .padding(.leading, 10.0)
-                    HStack {
+                    HStack.init(alignment: .center, spacing: -10, content:  {
+
                         TextField("User ID", text:self.$userID, onEditingChanged: {edit in
                             self.usrIdEditing = edit;
                         })
@@ -34,7 +35,12 @@ struct LoginView: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width:g.size.width*10/100, height: 45, alignment: .leading)
-                    }
+                            .gesture(
+                                            TapGesture()
+                                                .onEnded { _ in
+                                                }
+                                        )
+                    })
                     Text("Password")
                         .padding(.leading, 10.0)
                     TextField(" Password", text:self.$password, onEditingChanged: {edit in
@@ -42,6 +48,15 @@ struct LoginView: View {
                     })
                     .frame(width: g.size.width*85/100, height: 45, alignment: .center)
                     .textFieldStyle(Talk2SiriTextField(focused: self.$pwdEditing))
+                    
+                    
+                    Button(" Sign On ") {
+                        print("Action now")
+                    }
+                    .buttonStyle(Talk2SiriButton())
+                    .alignmentGuide(.trailing, computeValue: { dimension in
+                        300
+                    })
                 }
                 
             }.frame(width: g.size.width, height: 250, alignment: .center)

@@ -20,3 +20,15 @@ struct Talk2SiriTextField: TextFieldStyle {
         ).padding()
     }
 }
+
+struct Talk2SiriButton: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration
+            .label
+            .foregroundColor(configuration.isPressed ? .gray : .white)
+            .padding()
+            .background(Color.red)
+            .cornerRadius(10.0)
+    }
+    
+}
